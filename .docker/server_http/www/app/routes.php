@@ -6,6 +6,8 @@ return function(\FastRoute\RouteCollector $router) {
     $router->addRoute('GET', '/', 'App\Controller\HomeController::print');
     $router->addRoute('GET', '/index.php', 'App\Controller\HomeController::print');
  
+    $router->addRoute('GET', '/api', 'App\Controller\ApiController::print');
+    $router->addRoute('POST', '/api', 'App\Controller\ApiController::process');
     $router->addRoute('GET', '/api/', 'App\Controller\ApiController::print');
     $router->addRoute('POST', '/api/', 'App\Controller\ApiController::process');
 

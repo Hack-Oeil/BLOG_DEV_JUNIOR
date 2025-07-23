@@ -13,6 +13,8 @@ services:
       - ./.docker/db/init.sql:/docker-entrypoint-initdb.d
   webserver:
     build: ./.docker/server_http/
+    environment:
+      - HOOS_CTF_USERNAME=${HOOS_CTF_USERNAME:-}
     ports:
       - ${PORT}:80
     restart: always
