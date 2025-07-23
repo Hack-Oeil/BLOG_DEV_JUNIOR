@@ -10,11 +10,19 @@ class AuthController extends AbstractController
 {
     public function auth() 
     {  
+        if (isset($_SESSION['user'])) {
+            header('Location: profile.php');
+            exit;
+        }
         return $this->render('auth');
     }
 
     public function authProcess() 
     {  
+        if (isset($_SESSION['user'])) {
+            header('Location: profile.php');
+            exit;
+        }
         $repo = new UserRepository();
         $pdo = $repo->getPDO();
         $username = trim($_POST['username'] ?? '');

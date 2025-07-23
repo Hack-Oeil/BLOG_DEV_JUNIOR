@@ -8,19 +8,6 @@ use App\Repository\ArticleRepository;
 
 class HomeController extends AbstractController
 {
-/* modele pour flag
-    public function print() 
-    {  
-        $user = $this->getUser();
-        if($user) {
-            if($this->isSecretData($user->getUsername(),'3a527111aa1aff992')) {
-                $flag = $this->getFlag();
-            }
-        }
-        return $this->render('home', ['flag' => $flag??null]);
-    }
-*/
-
     public function print() 
     {  
         $repo = new ArticleRepository();
@@ -37,7 +24,8 @@ class HomeController extends AbstractController
         
         return $this->render('home', [
             "search"    => $search,
-            "results"   => $results
+            "results"   => $results, 
+            'user'      => $_SESSION['user']??null
         ]);
     }
 }
