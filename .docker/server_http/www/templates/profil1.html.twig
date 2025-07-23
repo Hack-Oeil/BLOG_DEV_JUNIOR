@@ -1,0 +1,24 @@
+{% extends 'layout.html.twig' %}
+
+{% block header %}
+  <header class="py-5 text-center">
+    <div class="container">
+      <h1 class="display-4 mt-4">Bienvenue, {{ user.username }}</h1>
+      <p class="lead mb-4">Voici les détails de votre profil</p>
+    </div>
+  </header>
+{% endblock %}
+
+{% block body %}
+
+  <!-- TODO : basculer sur profil2 quand, la nouvelle version sera prete -->
+  <main class="container d-flex justify-content-center">
+    <div class="card bg-secondary text-light mb-5 text-center" style="min-width: 350px; max-width: 500px; width: 100%;">
+      <div class="card-body">
+        <img src="uploads/{{ user.avatar }}.png" class="mb-4" alt="Avatar" width="256" height="256">
+        <h4 class="card-title">{{ user.username }}</h4>
+        <p class="card-text">{{ user.email }}</p>
+      </div>
+    </div>
+  </main>
+{% endblock %}

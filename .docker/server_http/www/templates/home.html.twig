@@ -1,0 +1,40 @@
+{% extends 'layout.html.twig' %}
+
+{% block header %}
+  <header class="py-5 text-center">
+    <div class="container">
+      <h1 class="display-4 mt-4">Bienvenue sur mon site perso !</h1>
+      <p class="lead mb-4">Le contenu est en cours de création</p>
+    </div>
+  </header>
+{% endblock %}
+
+{% block body %}
+<main class="container">
+  <div class="row row-cols-1 g-4">
+    <div class="mb-5 text-center">
+      <form method="get" action="index.php" class="d-flex justify-content-center">
+        <input type="text" name="search" class="form-control w-50 me-2" placeholder="Rechercher un article..." value="{{ search|e }}">
+        <button type="submit" class="btn btn-light">Rechercher</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="row row-cols-1 g-4">
+    {% if search != "" %}
+      <h4>Résultats pour "{{ search|e }}" :</h4>
+    {% endif %}
+    {% for row in results %}
+      <div class="col">
+        <div class="card bg-secondary text-light">
+          <img src="uploads/{{ row.id|e }}.jpg" class="card-img-top" alt="Article">
+          <div class="card-body text-center">
+            <h3 class="card-title">{{ row.title|e }}</h3>
+            <p class="card-text">{{ row.text|e }}</p>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</main>
+{% endblock %}
