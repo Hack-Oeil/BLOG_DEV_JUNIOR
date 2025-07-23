@@ -16,9 +16,27 @@
     <link rel="stylesheet" href="./assets/css/namari-color.css">
     <!--Google Webfonts-->
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Vérifie si la fenêtre est dans une iframe
+            if (window.self !== window.top) {
+                document.querySelectorAll('a').forEach((link) => {
+                link.addEventListener('click', (event) => {
+                    const a = event.target.closest('a[href^="http"]');
+                    if (a) {
+                    event.preventDefault();
+                    window.parent.postMessage({
+                        type: "open-external",
+                        url: a.href
+                    }, "*");
+                    }
+                });
+                });
+            }
+        });
+    </script>
 </head>
 <body>
-
 <div id="wrapper">
     <!--Main Content Area-->
     <main id="content">
